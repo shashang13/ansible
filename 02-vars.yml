@@ -42,6 +42,9 @@
 - name: Register Variable
   hosts: all
   tasks:
-    - name: Print Registered Variable
+    - name: Set Registered Variable
       ansible.builtin.shell: uptime
       register: out
+    - name: Print registered variable
+      ansible.builtin.debug:
+        msg: "{{out}}"
