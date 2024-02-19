@@ -45,9 +45,9 @@
     - name: Set Registered Variable
       ansible.builtin.shell: uptime
       register: out
-#    - name: Print registered variable
-#      ansible.builtin.debug:
-#        msg: "{{out}}"
+    - name: Print registered variable
+      ansible.builtin.debug:
+        msg: "{{out}}"
     - name: Set fact variable
       ansible.builtin.set_fact:
         OUT: "{{out.stdout}}"
