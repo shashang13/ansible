@@ -6,3 +6,10 @@
     - name: Print Play level variable
       ansible.builtin.debug:
         msg: Play level URL is {{URL}}
+
+- name: File Level Variable
+  hosts: all
+  tasks:
+    - name: Print File level variable
+      ansible.builtin.debug:
+        msg: File level URL is {{URL}}
