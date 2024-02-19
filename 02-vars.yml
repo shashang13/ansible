@@ -9,6 +9,8 @@
 
 - name: File Level Variable
   hosts: all
+  vars_files:
+    - sample-vars.yml
   tasks:
     - name: Print File level variable
       ansible.builtin.debug:
