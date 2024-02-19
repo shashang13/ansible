@@ -31,3 +31,10 @@
     - name: Print Task level Variable
       ansible.builtin.debug:
         msg: Inventory level URL is {{URL}}
+
+- name: Print ansible facts variable
+  hosts: all
+  tasks:
+    - name: Print fact variable
+      ansible.builtin.debug:
+        msg: One of the fact variable is {{ansible_distribution}} and host ip is {{ansible_default_ipv4.address}}
