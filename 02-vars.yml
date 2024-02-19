@@ -23,4 +23,4 @@
       vars:
         URL: task.example.com
       ansible.builtin.debug:
-        msg: Task level URL is
+        msg: Task level URL is {{URL}}
