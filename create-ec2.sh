@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+#set -x
 
 createEc2(){
   PRIVATE_IP=$(aws ec2 run-instances \

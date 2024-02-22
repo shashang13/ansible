@@ -1,1 +1,4 @@
 172.31.5.49     URL=host.example.com
+
+[FRONTEND]
+frontend.roboshop.internal

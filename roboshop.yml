@@ -1,0 +1,4 @@
+- name: Roboshop play book
+  hosts: FRONTEND
+  roles:
+    - frontend
