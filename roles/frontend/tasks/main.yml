@@ -18,12 +18,12 @@
   ansible.builtin.copy:
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html/
-
-- name: Deploy frontend content
-  ansible.builtin.copy:
-    src: /tmp/frontend-main/static/
-    dest: /usr/share/nginx/html/
     remote_src: yes
+
+- name: Copy roboshop conf
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/
 
 - name: Restart nginx service
   ansible.builtin.systemd:
