@@ -3,42 +3,29 @@
     name: nginx
     state: present
 
-- name: Download HTDOCS content
+- name: Download and unarchive Frontend
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp/
     remote_src: yes
 
+- name: Cleanup old content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html/
+    state: absent
 
+- name: Deploy frontend content
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html/
 
-#```
-#  # yum install nginx -y
-#  # systemctl enable nginx
-#  # systemctl start nginx
-#
-#```
-#
-#Let's download the HTDOCS content and deploy under the Nginx path.
-#
-#```
-#  # curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
-#
-#```
-#
-#Deploy the downloaded content in Nginx Default Location.
-#
-#```
-#  # cd /usr/share/nginx/html
-#  # rm -rf *
-#  # unzip /tmp/frontend.zip
-#  # mv frontend-main/static/* .
-#  # mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
-#
-#```
-#
-#Finally restart the service once to effect the changes.
-#
-#```
-#  # systemctl restart nginx
-#
-#```
+- name: Deploy frontend content
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html/
+
+- name: Restart nginx service
+  ansible.builtin.systemd_service:
+    name: nginx
+    state: restarted
+    daemon_reload: true
