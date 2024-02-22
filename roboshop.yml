@@ -1,5 +1,5 @@
 - name: Roboshop play book
   hosts: FRONTEND
-  become: root
+  become: true
   roles:
     - frontend
