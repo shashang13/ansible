@@ -5,7 +5,7 @@
 
 - name: Download HTDOCS content
   ansible.builtin.unarchive:
-    source: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp/frontend.zip
     remote_src: yes
 
