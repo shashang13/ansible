@@ -31,14 +31,14 @@
   community.mongodb.mongodb_shell:
 #    login_user: user
 #    login_password: secret
-    file: "/tmp/catalogue.js"
+    file: "/tmp/mongodb-main/catalogue.js"
     idempotent: yes
 
 - name: Load Users schema
   community.mongodb.mongodb_shell:
 #    login_user: user
 #    login_password: secret
-    file: "/tmp/users.js"
+    file: "/tmp/mongodb-main/users.js"
     idempotent: yes
 
 #    Every Database needs the schema to be loaded for the application to work.
