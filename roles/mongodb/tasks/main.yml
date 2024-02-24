@@ -23,7 +23,7 @@
 
 - name: Download and unzip schema.
   ansible.builtin.unarchive:
-    src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
+    src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
     dest: /tmp/
     remote_src: yes
 
@@ -34,9 +34,4 @@
   loop:
     - catalogue
     - users
-#
-#- name: Load Users schema
-#  community.mongodb.mongodb_shell:
-#    file: "/tmp/mongodb-main/users.js"
-#    idempotent: yes
 
