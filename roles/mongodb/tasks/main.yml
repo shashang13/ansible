@@ -24,7 +24,7 @@
 - name: Download and unzip schema.
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
-    dest: /tmp/mongodb.zip
+    dest: /tmp/
     remote_src: yes
 
 - name: Load Catalogue schema
