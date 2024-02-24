@@ -21,11 +21,25 @@
       daemon_reload: true
       enabled: true
 
-- name: Copy mongodb repo file
-  ansible.builtin.copy:
+- name: Download and unzip schema.
+  ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
     dest: /tmp/mongodb.zip
     remote_src: yes
+
+- name: Load Catalogue schema
+  community.mongodb.mongodb_shell:
+#    login_user: user
+#    login_password: secret
+    file: "/tmp/catalogue.js"
+    idempotent: yes
+
+- name: Load Users schema
+  community.mongodb.mongodb_shell:
+#    login_user: user
+#    login_password: secret
+    file: "/tmp/users.js"
+    idempotent: yes
 
 #    Every Database needs the schema to be loaded for the application to work.
 #    Download the schema and load it.
