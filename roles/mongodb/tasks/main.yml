@@ -21,11 +21,10 @@
       daemon_reload: true
       enabled: true
 
-- name: Download and unzip schema.
-  ansible.builtin.unarchive:
-    src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
-    dest: /tmp/
-    remote_src: yes
+- name: Download and extract schemas
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
 
 - name: Load MongoDb schemas
   community.mongodb.mongodb_shell:
