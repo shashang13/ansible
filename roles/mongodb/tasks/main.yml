@@ -27,27 +27,16 @@
     dest: /tmp/
     remote_src: yes
 
-- name: Load Catalogue schema
+- name: Load MongoDb schemas
   community.mongodb.mongodb_shell:
-#    login_user: user
-#    login_password: secret
-    file: "/tmp/mongodb-main/catalogue.js"
+    file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
-
-- name: Load Users schema
-  community.mongodb.mongodb_shell:
-#    login_user: user
-#    login_password: secret
-    file: "/tmp/mongodb-main/users.js"
-    idempotent: yes
-
-#    Every Database needs the schema to be loaded for the application to work.
-#    Download the schema and load it.
-#  # curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+    loop:
+      - catalogue
+      - users
 #
-#  # cd /tmp
-#  # unzip mongodb.zip
-#  # cd mongodb-main
-#  # mongo < catalogue.js
-#  # mongo < users.js
+#- name: Load Users schema
+#  community.mongodb.mongodb_shell:
+#    file: "/tmp/mongodb-main/users.js"
+#    idempotent: yes
 
