@@ -1,11 +1,5 @@
-- name: Roboshop Frontend Playbook
-  hosts: FRONTEND
+- name: Roboshop Playbook
+  hosts: {{HOSTS}}
   become: true
   roles:
-    - frontend
-
-- name: Roboshop Mongodb Playbook
-  hosts: MONGODB
-  become: true
-  roles:
-    - mongodb
+    - {{role_name}}
