@@ -1,5 +1,5 @@
 - name: Roboshop Playbook
-  hosts: {{HOSTS}}
+  hosts: { { HOSTS } }
   become: true
   roles:
-    - {{role_name}}
+    - { { ROLE_NAME } }
