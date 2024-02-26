@@ -38,9 +38,9 @@
     src: systemd.service
     dest: /etc/systemd/system/{{COMPONENT}}.service
 
-- name: Start Catalogue application
+- name: Start {{COMPONENT}} application
   ansible.builtin.systemd:
-    name: user
+    name: "{{COMPONENT}}"
     state: restarted
     enabled: true
     daemon_reload: true
