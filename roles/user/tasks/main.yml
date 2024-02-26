@@ -31,7 +31,7 @@
 #Update REDIS_ENDPOINT with Redis Server IP
 #Update MONGO_ENDPOINT with MongoDB Server IP
 #Now, lets set up the service with systemctl.
-## mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
+## mv /home/roboshop/user/systemd.service /etc/systemd/system/systemd.service
 ## systemctl daemon-reload
 ## systemctl start user
 ## systemctl enable user
