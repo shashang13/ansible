@@ -31,6 +31,7 @@
 - name: Install Catalogue app
   community.general.npm:
     path: /home/roboshop/catalogue/
+  become_user: roboshop
 
 
 #So let's switch to the roboshop user and run the following commands.
