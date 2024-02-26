@@ -1,6 +1,6 @@
-- name: testing the new component
+- name: testing
   ansible.builtin.debug:
-    - msg: catalogue
+    msg: catalogue
 
 #This service is written in NodeJS, Hence need to install NodeJS in the system.
 #On CentOS-7
