@@ -6,19 +6,20 @@
     name: nodejs
     state: installed
 
-- name: Add application user
-  ansible.builtin.user:
-    name: roboshop
-
-- name: Cleanup old content
-  ansible.builtin.file:
-    path: /home/roboshop/
-    state: absent
-
-- name: Download and extract catalogue archive
+- name: Download and extract catalogue
   ansible.builtin.include_role:
     name: common
     tasks_from: download
+
+- name: Add application user
+  ansible.builtin.user:
+    name: roboshop
+    create_home: true
+
+- name: Cleanup old content
+  ansible.builtin.file:
+    path: /home/roboshop/catalogue
+    state: absent
 
 - name: Copy application
   ansible.builtin.copy:
