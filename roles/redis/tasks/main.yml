@@ -1,3 +1,6 @@
+- name: Set hostname
+  ansible.builtin.shell: sudo set-hostname {{COMPONENT}}
+
 - name: Copy repo file
   ansible.builtin.copy:
     src: redis.repo
