@@ -1,6 +1,10 @@
-- name: testing
-  ansible.builtin.debug:
-    msg: catalogue
+- name: Install NPM
+  ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+
+- name: Install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
 
 #This service is written in NodeJS, Hence need to install NodeJS in the system.
 #On CentOS-7
