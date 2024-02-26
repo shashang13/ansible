@@ -33,6 +33,11 @@
     path: /home/roboshop/catalogue/
   become_user: roboshop
 
+- name: Copy systemd service file
+  ansible.builtin.copy:
+    src: catalogue.service
+    dest: /etc/systemd/system/catalogue.service
+
 - name: Start Catalogue application
   ansible.builtin.systemd:
     name: catalogue
