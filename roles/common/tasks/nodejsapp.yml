@@ -28,7 +28,7 @@
     remote_src: yes
   become_user: roboshop
 
-- name: Install Catalogue app
+- name: Install {{COMPONENT}} app
   community.general.npm:
     path: /home/roboshop/{{COMPONENT}}/
   become_user: roboshop
