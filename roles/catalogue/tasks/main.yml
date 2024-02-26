@@ -28,6 +28,10 @@
     remote_src: yes
   become_user: roboshop
 
+- name: Install Catalogue app
+  community.general.npm:
+    path: /home/roboshop/catalogue/
+
 
 #So let's switch to the roboshop user and run the following commands.
 #$ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
