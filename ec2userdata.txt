@@ -1,4 +1,3 @@
 #! /bin/bash
 
 sudo enable-auto-shutdown
-sudo set-hostname "${COMPONENT}"
