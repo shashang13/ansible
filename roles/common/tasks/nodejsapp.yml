@@ -1,0 +1,46 @@
+- name: Install NPM
+  ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+
+- name: Install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: Add application user
+  ansible.builtin.user:
+    name: roboshop
+    create_home: true
+
+- name: Cleanup old content
+  ansible.builtin.file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: absent
+
+- name: Download and extract {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+- name: Copy application
+  ansible.builtin.copy:
+    src: /tmp/{{COMPONENT}}-main/
+    dest: /home/roboshop/{{COMPONENT}}/
+    remote_src: yes
+  become_user: roboshop
+
+- name: Install Catalogue app
+  community.general.npm:
+    path: /home/roboshop/{{COMPONENT}}/
+  become_user: roboshop
+
+- name: Copy systemd service file
+  ansible.builtin.copy:
+    src: "{{COMPONENT}}".service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
+
+- name: Start Catalogue application
+  ansible.builtin.systemd:
+    name: user
+    state: restarted
+    enabled: true
+    daemon_reload: true
